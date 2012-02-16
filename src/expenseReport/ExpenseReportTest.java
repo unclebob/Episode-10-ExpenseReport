@@ -7,18 +7,20 @@ import static expenseReport.Expense.Type.*;
 import static org.junit.Assert.assertEquals;
 
 public class ExpenseReportTest {
-  private ExpenseReport report = new ExpenseReport();
-  private MockReportPrinter printer = new MockReportPrinter();
+  private ExpenseReport report;
+  private ExpenseReporter reporter;
+  private MockReportPrinter printer;
 
   @Before
   public void setUp() {
     report = new ExpenseReport();
+    reporter = new ExpenseReporter(report);
     printer = new MockReportPrinter();
   }
 
   @Test
   public void printEmpty() {
-    report.printReport(printer);
+    reporter.printReport(printer);
 
     assertEquals(
       "Expenses 9/12/2002\n" +
@@ -30,8 +32,8 @@ public class ExpenseReportTest {
 
   @Test
   public void printOneDinner() {
-    report.addExpense(new Expense(DINNER, 1678));
-    report.printReport(printer);
+    report.addExpense(new DinnerExpense(1678));
+    reporter.printReport(printer);
 
     assertEquals(
       "Expenses 9/12/2002\n" +
@@ -44,9 +46,9 @@ public class ExpenseReportTest {
 
   @Test
   public void twoMeals() throws Exception {
-    report.addExpense(new Expense(DINNER, 1000));
-    report.addExpense(new Expense(BREAKFAST, 500));
-    report.printReport(printer);
+    report.addExpense(new DinnerExpense(1000));
+    report.addExpense(new BreakfastExpense(500));
+    reporter.printReport(printer);
 
     assertEquals(
       "Expenses 9/12/2002\n" +
@@ -61,10 +63,10 @@ public class ExpenseReportTest {
 
   @Test
   public void twoMealsAndCarRental() throws Exception {
-    report.addExpense(new Expense(DINNER, 1000));
-    report.addExpense(new Expense(BREAKFAST, 500));
-    report.addExpense(new Expense(CAR_RENTAL, 50000));
-    report.printReport(printer);
+    report.addExpense(new DinnerExpense(1000));
+    report.addExpense(new BreakfastExpense(500));
+    report.addExpense(new CarRentalExpense(50000));
+    reporter.printReport(printer);
 
     assertEquals(
       "Expenses 9/12/2002\n" +
@@ -79,11 +81,11 @@ public class ExpenseReportTest {
 
   @Test
   public void overages() throws Exception {
-    report.addExpense(new Expense(BREAKFAST, 1000));
-    report.addExpense(new Expense(BREAKFAST, 1001));
-    report.addExpense(new Expense(DINNER, 5000));
-    report.addExpense(new Expense(DINNER, 5001));
-    report.printReport(printer);
+    report.addExpense(new BreakfastExpense(1000));
+    report.addExpense(new BreakfastExpense(1001));
+    report.addExpense(new DinnerExpense(5000));
+    report.addExpense(new DinnerExpense(5001));
+    reporter.printReport(printer);
 
     assertEquals(
       "Expenses 9/12/2002\n" +
