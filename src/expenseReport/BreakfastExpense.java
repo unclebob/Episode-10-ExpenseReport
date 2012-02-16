@@ -6,7 +6,7 @@ public class BreakfastExpense extends Expense {
   }
 
   boolean isOverage() {
-    return amount > 1000;
+    return getAmount() > 1000;
   }
 
   boolean isMeal() {

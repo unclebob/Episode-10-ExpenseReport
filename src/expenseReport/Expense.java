@@ -1,10 +1,14 @@
 package expenseReport;
 
 public abstract class Expense {
-  public int amount;
+  private int amount;
 
   public Expense(int amount) {
     this.amount = amount;
+  }
+
+  public int getAmount() {
+    return amount;
   }
 
   abstract boolean isOverage();

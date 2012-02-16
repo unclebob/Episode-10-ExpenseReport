@@ -34,7 +34,7 @@ public class ExpenseReporter {
     printer.print(String.format("%s\t%s\t$%.02f\n",
       expense.isOverage() ? "X" : " ",
       namer.getName(expense),
-      penniesToDollars(expense.amount)));
+      penniesToDollars(expense.getAmount())));
   }
 
   private void printTotals() {
@@ -44,10 +44,6 @@ public class ExpenseReporter {
 
   private double penniesToDollars(int pennies) {
     return pennies / 100.0;
-  }
-
-  private String getName(Expense expense) {
-    return namer.getName(expense);
   }
 
   private String getDate() {

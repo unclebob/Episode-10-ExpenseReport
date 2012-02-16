@@ -20,8 +20,8 @@ public class ExpenseReport {
 
   void addToTotals(Expense expense) {
     if (expense.isMeal())
-      mealExpenses += expense.amount;
-    total += expense.amount;
+      mealExpenses += expense.getAmount();
+    total += expense.getAmount();
   }
 
   public int getMealExpenses() {
