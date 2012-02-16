@@ -3,7 +3,6 @@ package expenseReport;
 import org.junit.Before;
 import org.junit.Test;
 
-import static expenseReport.Expense.Type.*;
 import static org.junit.Assert.assertEquals;
 
 public class ExpenseReportTest {
