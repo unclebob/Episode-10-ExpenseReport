@@ -38,8 +38,10 @@ public class ExpenseReporter {
   }
 
   private void printTotals() {
-    printer.print(String.format("\nMeal expenses $%.02f", penniesToDollars(report.getMealExpenses())));
-    printer.print(String.format("\nTotal $%.02f", penniesToDollars(report.getTotal())));
+    printer.print(String.format("\nMeal expenses $%.02f",
+      penniesToDollars(report.getMealExpenses())));
+    printer.print(String.format("\nTotal $%.02f",
+      penniesToDollars(report.getTotal())));
   }
 
   private double penniesToDollars(int pennies) {

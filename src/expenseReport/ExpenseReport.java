@@ -24,19 +24,8 @@ public class ExpenseReport {
     total += expense.getAmount();
   }
 
-  public int getMealExpenses() {
-    return mealExpenses;
-  }
-
-  public int getTotal() {
-    return total;
-  }
-
-  public void addExpense(Expense expense) {
-    expenses.add(expense);
-  }
-
-  public List<Expense> getExpenses() {
-    return expenses;
-  }
+  public int getMealExpenses() { return mealExpenses; }
+  public int getTotal() { return total; }
+  public void addExpense(Expense expense) { expenses.add(expense); }
+  public List<Expense> getExpenses() { return expenses; }
 }

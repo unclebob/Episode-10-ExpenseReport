@@ -15,3 +15,4 @@ public abstract class Expense {
 
   abstract boolean isMeal();
 }
+
